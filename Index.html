@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Attendance System</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span>📚</span>
+            SmartAttend
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button class="nav-btn" onclick="openRoleModal()">
+            Get Started
+        </button>
+
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <span class="badge">
+                    ✨ Smart • Simple • Secure
+                </span>
+
+                <h1>
+                    Attendance Management
+                    <span>Made Smarter.</span>
+                </h1>
+
+                <p>
+                    A modern attendance management system that helps
+                    students and teachers manage attendance easily,
+                    accurately, and efficiently.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="primary-btn" onclick="openRoleModal()">
+                        Get Started →
+                    </button>
+
+                    <a href="#features" class="secondary-btn">
+                        Explore Features
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Dashboard Preview -->
+
+            <div class="dashboard-preview">
+
+                <div class="preview-header">
+                    <span>Attendance Overview</span>
+                    <span class="online-dot">●</span>
+                </div>
+
+                <div class="attendance-circle">
+                    <strong>87%</strong>
+                    <small>Attendance</small>
+                </div>
+
+                <div class="stats">
+
+                    <div class="stat-box">
+                        <strong>42</strong>
+                        <span>Total Classes</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <strong>37</strong>
+                        <span>Present</span>
+                    </div>
+
+                    <div class="stat-box">
+                        <strong>5</strong>
+                        <span>Absent</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <section class="features-section" id="features">
+
+            <div class="section-heading">
+
+                <span class="badge">
+                    Powerful Features
+                </span>
+
+                <h2>
+                    Everything You Need
+                </h2>
+
+                <p>
+                    Designed to make attendance management
+                    easier for everyone.
+                </p>
+
+            </div>
+
+
+            <div class="features-grid">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">📊</div>
+
+                    <h3>Attendance Tracking</h3>
+
+                    <p>
+                        Track attendance records and monitor
+                        student performance easily.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">🔔</div>
+
+                    <h3>Smart Notifications</h3>
+
+                    <p>
+                        Receive important attendance updates
+                        and timely notifications.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">🔐</div>
+
+                    <h3>Secure Accounts</h3>
+
+                    <p>
+                        Secure authentication and personal
+                        account management.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">📱</div>
+
+                    <h3>Responsive Design</h3>
+
+                    <p>
+                        Access your attendance dashboard
+                        from any device.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ABOUT ================= -->
+
+        <section class="about-section" id="about">
+
+            <div class="about-content">
+
+                <span class="badge">
+                    About SmartAttend
+                </span>
+
+                <h2>
+                    Making Attendance
+                    Simple & Efficient
+                </h2>
+
+                <p>
+                    SmartAttend is designed to simplify the traditional
+                    attendance management process. Students can easily
+                    monitor their attendance while teachers can manage
+                    records efficiently.
+                </p>
+
+                <button class="primary-btn" onclick="openRoleModal()">
+                    Start Using SmartAttend →
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="logo">
+            📚 SmartAttend
+        </div>
+
+        <p>
+            Smart attendance management for modern education.
+        </p>
+
+        <p class="copyright">
+            © 2026 SmartAttend. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= ROLE MODAL ================= -->
+
+    <div class="modal-overlay" id="roleModal">
+
+        <div class="role-modal">
+
+            <button class="close-btn" onclick="closeRoleModal()">
+                ×
+            </button>
+
+            <h2>
+                Welcome to SmartAttend
+            </h2>
+
+            <p>
+                Choose your role to continue
+            </p>
+
+
+            <div class="role-options">
+
+                <button
+                    class="role-card"
+                    onclick="selectRole('student')"
+                >
+
+                    <span class="role-icon">🎓</span>
+
+                    <strong>I'm a Student</strong>
+
+                    <small>
+                        View attendance & notifications
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="role-card"
+                    onclick="selectRole('teacher')"
+                >
+
+                    <span class="role-icon">👨‍🏫</span>
+
+                    <strong>I'm a Teacher</strong>
+
+                    <small>
+                        Manage students & attendance
+                    </small>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+      </html>
