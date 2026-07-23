@@ -20,13 +20,13 @@ function selectRole(role) {
 
     if (role === "student") {
 
-        alert("Student Registration & Login coming soon! 🎓");
+        window.location.href = "student-login.html";
 
     }
 
     else if (role === "teacher") {
 
-        alert("Teacher Login coming soon! 👨‍🏫");
+        alert("Teacher Portal coming soon! 👨‍🏫");
 
     }
 
