@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard | SmartAttend</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            📚 SmartAttend
+        </div>
+
+        <button class="logout-btn" id="logoutBtn">
+            Logout
+        </button>
+
+    </header>
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <main class="dashboard-container">
+
+        <!-- Welcome -->
+
+        <section class="welcome-section">
+
+            <div>
+
+                <span class="badge">
+                    Student Dashboard
+                </span>
+
+                <h1>
+                    Welcome, <span id="studentName">Student</span>! 👋
+                </h1>
+
+                <p>
+                    Here's an overview of your attendance and academic information.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= STUDENT INFO ================= -->
+
+        <section class="student-info-grid">
+
+            <div class="dashboard-card">
+
+                <span class="card-icon">👤</span>
+
+                <div>
+
+                    <small>
+                        Full Name
+                    </small>
+
+                    <h3 id="dashboardName">
+                        Loading...
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <span class="card-icon">🆔</span>
+
+                <div>
+
+                    <small>
+                        Roll Number
+                    </small>
+
+                    <h3 id="dashboardRoll">
+                        Loading...
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <span class="card-icon">🎓</span>
+
+                <div>
+
+                    <small>
+                        Course / Branch
+                    </small>
+
+                    <h3 id="dashboardCourse">
+                        Loading...
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <span class="card-icon">📧</span>
+
+                <div>
+
+                    <small>
+                        Email
+                    </small>
+
+                    <h3 id="dashboardEmail">
+                        Loading...
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ATTENDANCE ================= -->
+
+        <section class="attendance-section">
+
+            <div class="section-heading">
+
+                <span class="badge">
+                    Attendance Overview
+                </span>
+
+                <h2>
+                    Your Attendance
+                </h2>
+
+            </div>
+
+
+            <div class="attendance-grid">
+
+
+                <!-- Attendance Percentage -->
+
+                <div class="attendance-card main-attendance">
+
+                    <div class="attendance-circle">
+
+                        <strong>
+                            87%
+                        </strong>
+
+                        <small>
+                            Overall Attendance
+                        </small>
+
+                    </div>
+
+                    <p>
+                        Keep maintaining your attendance! 🎯
+                    </p>
+
+                </div>
+
+
+                <!-- Total Classes -->
+
+                <div class="attendance-card">
+
+                    <span class="big-icon">
+                        📚
+                    </span>
+
+                    <h3>
+                        42
+                    </h3>
+
+                    <p>
+                        Total Classes
+                    </p>
+
+                </div>
+
+
+                <!-- Present -->
+
+                <div class="attendance-card">
+
+                    <span class="big-icon">
+                        ✅
+                    </span>
+
+                    <h3>
+                        37
+                    </h3>
+
+                    <p>
+                        Classes Present
+                    </p>
+
+                </div>
+
+
+                <!-- Absent -->
+
+                <div class="attendance-card">
+
+                    <span class="big-icon">
+                        ❌
+                    </span>
+
+                    <h3>
+                        5
+                    </h3>
+
+                    <p>
+                        Classes Absent
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NOTIFICATIONS ================= -->
+
+        <section class="notifications-section">
+
+            <div class="section-heading">
+
+                <span class="badge">
+                    🔔 Notifications
+                </span>
+
+                <h2>
+                    Recent Updates
+                </h2>
+
+            </div>
+
+
+            <div class="notification-card">
+
+                <div class="notification-icon">
+                    📢
+                </div>
+
+                <div>
+
+                    <h3>
+                        Welcome to SmartAttend!
+                    </h3>
+
+                    <p>
+                        Your student account has been successfully created.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="notification-card">
+
+                <div class="notification-icon">
+                    📅
+                </div>
+
+                <div>
+
+                    <h3>
+                        Attendance Tracking
+                    </h3>
+
+                    <p>
+                        Your attendance records will appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ATTENDANCE HISTORY ================= -->
+
+        <section class="history-section">
+
+            <div class="section-heading">
+
+                <span class="badge">
+                    📊 Attendance History
+                </span>
+
+                <h2>
+                    Recent Attendance
+                </h2>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Subject
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                20 July 2026
+                            </td>
+
+                            <td>
+                                Computer Networks
+                            </td>
+
+                            <td class="present">
+                                Present
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                19 July 2026
+                            </td>
+
+                            <td>
+                                Database Management
+                            </td>
+
+                            <td class="present">
+                                Present
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                18 July 2026
+                            </td>
+
+                            <td>
+                                Operating Systems
+                            </td>
+
+                            <td class="absent">
+                                Absent
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="logo">
+            📚 SmartAttend
+        </div>
+
+        <p>
+            Smart attendance management for modern education.
+        </p>
+
+        <p class="copyright">
+            © 2026 SmartAttend. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>
