@@ -1,8 +1,9 @@
 // firebase-config.js
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { 
-    getAuth 
+
+import {
+    getAuth
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 import {
@@ -10,9 +11,11 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
+// Your Firebase configuration
+
 const firebaseConfig = {
 
-    apiKey: "YOUR_API_KEY",
+    apiKey: "AIzaSyDVqW0IuoquzCY5Nx42oNybe_0XibpoR4Y",
 
     authDomain: "attendance-system-8796f.firebaseapp.com",
 
@@ -44,4 +47,9 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 
-export { auth, db };
+// Export Firebase services
+
+export {
+    auth,
+    db
+};
