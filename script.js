@@ -6,12 +6,15 @@ import { auth, db } from "./firebase-config.js";
 
 import {
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 import {
     doc,
-    setDoc
+    setDoc,
+    getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 
@@ -19,10 +22,11 @@ import {
 // ROLE MODAL
 // ======================================================
 
-const roleModal = document.getElementById("roleModal");
+const roleModal =
+    document.getElementById("roleModal");
 
 
-// Open modal
+// Open role modal
 
 function openRoleModal() {
 
@@ -35,7 +39,7 @@ function openRoleModal() {
 }
 
 
-// Close modal
+// Close role modal
 
 function closeRoleModal() {
 
@@ -52,33 +56,38 @@ function closeRoleModal() {
 
 function selectRole(role) {
 
-
     if (role === "student") {
 
-        window.location.href = "student-login.html";
+        window.location.href =
+            "student-login.html";
 
     }
 
-
     else if (role === "teacher") {
 
-        alert("Teacher Portal coming soon! 👨‍🏫");
+        alert(
+            "Teacher Portal coming soon! 👨‍🏫"
+        );
 
     }
 
 }
 
 
-// Make functions available to HTML onclick
+// Make functions available
+// for HTML onclick attributes
 
-window.openRoleModal = openRoleModal;
+window.openRoleModal =
+    openRoleModal;
 
-window.closeRoleModal = closeRoleModal;
+window.closeRoleModal =
+    closeRoleModal;
 
-window.selectRole = selectRole;
+window.selectRole =
+    selectRole;
 
 
-// Close modal outside click
+// Close modal when clicking outside
 
 if (roleModal) {
 
@@ -86,7 +95,10 @@ if (roleModal) {
         "click",
         function (event) {
 
-            if (event.target === roleModal) {
+            if (
+                event.target ===
+                roleModal
+            ) {
 
                 closeRoleModal();
 
@@ -104,7 +116,6 @@ if (roleModal) {
 
 function togglePassword(inputId) {
 
-
     const passwordInput =
         document.getElementById(inputId);
 
@@ -116,24 +127,31 @@ function togglePassword(inputId) {
     }
 
 
-    if (passwordInput.type === "password") {
+    if (
+        passwordInput.type ===
+        "password"
+    ) {
 
-        passwordInput.type = "text";
+        passwordInput.type =
+            "text";
 
     }
 
     else {
 
-        passwordInput.type = "password";
+        passwordInput.type =
+            "password";
 
     }
 
 }
 
 
-// Make function available to HTML onclick
+// Make function available
+// for HTML onclick
 
-window.togglePassword = togglePassword;
+window.togglePassword =
+    togglePassword;
 
 
 // ======================================================
@@ -141,16 +159,16 @@ window.togglePassword = togglePassword;
 // ======================================================
 
 const registerForm =
-    document.getElementById("studentRegisterForm");
+    document.getElementById(
+        "studentRegisterForm"
+    );
 
 
 if (registerForm) {
 
-
     registerForm.addEventListener(
         "submit",
         async function (event) {
-
 
             event.preventDefault();
 
@@ -158,41 +176,62 @@ if (registerForm) {
             // Get form values
 
             const name =
-                document.getElementById("studentName")
-                .value
-                .trim();
+                document
+                    .getElementById(
+                        "studentName"
+                    )
+                    .value
+                    .trim();
 
 
             const rollNumber =
-                document.getElementById("rollNumber")
-                .value
-                .trim();
+                document
+                    .getElementById(
+                        "rollNumber"
+                    )
+                    .value
+                    .trim();
 
 
             const email =
-                document.getElementById("registerEmail")
-                .value
-                .trim();
+                document
+                    .getElementById(
+                        "registerEmail"
+                    )
+                    .value
+                    .trim();
 
 
             const course =
-                document.getElementById("course")
-                .value;
+                document
+                    .getElementById(
+                        "course"
+                    )
+                    .value;
 
 
             const password =
-                document.getElementById("registerPassword")
-                .value;
+                document
+                    .getElementById(
+                        "registerPassword"
+                    )
+                    .value;
 
 
             const confirmPassword =
-                document.getElementById("confirmPassword")
-                .value;
+                document
+                    .getElementById(
+                        "confirmPassword"
+                    )
+                    .value;
 
 
-            // Check password
+            // Check password match
 
-            if (password !== confirmPassword) {
+            if (
+                password !==
+                confirmPassword
+            ) {
 
                 alert(
                     "Passwords do not match! ❌"
@@ -205,10 +244,10 @@ if (registerForm) {
 
             try {
 
-
-                // -----------------------------------------
-                // STEP 1: CREATE FIREBASE AUTH USER
-                // -----------------------------------------
+                // ------------------------------------------
+                // STEP 1:
+                // CREATE FIREBASE AUTHENTICATION USER
+                // ------------------------------------------
 
                 const userCredential =
                     await createUserWithEmailAndPassword(
@@ -222,23 +261,33 @@ if (registerForm) {
                     userCredential.user;
 
 
-                // -----------------------------------------
-                // STEP 2: SAVE STUDENT DATA IN FIRESTORE
-                // -----------------------------------------
+                // ------------------------------------------
+                // STEP 2:
+                // SAVE STUDENT DATA IN FIRESTORE
+                // ------------------------------------------
 
                 await setDoc(
-                    doc(db, "students", user.uid),
+                    doc(
+                        db,
+                        "students",
+                        user.uid
+                    ),
                     {
 
-                        uid: user.uid,
+                        uid:
+                            user.uid,
 
-                        name: name,
+                        name:
+                            name,
 
-                        rollNumber: rollNumber,
+                        rollNumber:
+                            rollNumber,
 
-                        email: email,
+                        email:
+                            email,
 
-                        course: course,
+                        course:
+                            course,
 
                         createdAt:
                             new Date()
@@ -247,16 +296,16 @@ if (registerForm) {
                 );
 
 
-                // -----------------------------------------
-                // SUCCESS
-                // -----------------------------------------
+                // ------------------------------------------
+                // REGISTRATION SUCCESS
+                // ------------------------------------------
 
                 alert(
                     "Registration successful! 🎉"
                 );
 
 
-                // Redirect to login
+                // Redirect to login page
 
                 window.location.href =
                     "student-login.html";
@@ -264,9 +313,7 @@ if (registerForm) {
 
             }
 
-
             catch (error) {
-
 
                 console.error(
                     "Registration Error:",
@@ -274,7 +321,7 @@ if (registerForm) {
                 );
 
 
-                // Firebase error messages
+                // Firebase error handling
 
                 if (
                     error.code ===
@@ -287,7 +334,6 @@ if (registerForm) {
 
                 }
 
-
                 else if (
                     error.code ===
                     "auth/weak-password"
@@ -299,7 +345,6 @@ if (registerForm) {
 
                 }
 
-
                 else if (
                     error.code ===
                     "auth/invalid-email"
@@ -310,7 +355,6 @@ if (registerForm) {
                     );
 
                 }
-
 
                 else {
 
@@ -334,16 +378,16 @@ if (registerForm) {
 // ======================================================
 
 const loginForm =
-    document.getElementById("studentLoginForm");
+    document.getElementById(
+        "studentLoginForm"
+    );
 
 
 if (loginForm) {
 
-
     loginForm.addEventListener(
         "submit",
         async function (event) {
-
 
             event.preventDefault();
 
@@ -351,20 +395,27 @@ if (loginForm) {
             // Get login values
 
             const email =
-                document.getElementById("loginEmail")
-                .value
-                .trim();
+                document
+                    .getElementById(
+                        "loginEmail"
+                    )
+                    .value
+                    .trim();
 
 
             const password =
-                document.getElementById("loginPassword")
-                .value;
+                document
+                    .getElementById(
+                        "loginPassword"
+                    )
+                    .value;
 
 
             try {
 
-
-                // Firebase Login
+                // ------------------------------------------
+                // FIREBASE LOGIN
+                // ------------------------------------------
 
                 const userCredential =
                     await signInWithEmailAndPassword(
@@ -380,35 +431,34 @@ if (loginForm) {
 
                 console.log(
                     "Logged in user:",
-                    user
+                    user.uid
                 );
 
+
+                // Login successful
 
                 alert(
                     "Login successful! 🎉"
                 );
 
 
-                // Temporary redirect
-
-                // Later you can create
-                // student-dashboard.html
+                // Redirect to student dashboard
 
                 window.location.href =
-                    "index.html";
+                    "student-dashboard.html";
 
 
             }
 
-
             catch (error) {
-
 
                 console.error(
                     "Login Error:",
                     error
                 );
 
+
+                // Firebase error handling
 
                 if (
                     error.code ===
@@ -421,7 +471,6 @@ if (loginForm) {
 
                 }
 
-
                 else if (
                     error.code ===
                     "auth/user-not-found"
@@ -432,7 +481,6 @@ if (loginForm) {
                     );
 
                 }
-
 
                 else if (
                     error.code ===
@@ -445,7 +493,6 @@ if (loginForm) {
 
                 }
 
-
                 else {
 
                     alert(
@@ -454,6 +501,253 @@ if (loginForm) {
                     );
 
                 }
+
+            }
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// STUDENT DASHBOARD
+// ======================================================
+
+const dashboardName =
+    document.getElementById(
+        "dashboardName"
+    );
+
+
+// This code only runs on
+// student-dashboard.html
+
+if (dashboardName) {
+
+    onAuthStateChanged(
+        auth,
+        async function (user) {
+
+            // ------------------------------------------
+            // CHECK LOGIN STATUS
+            // ------------------------------------------
+
+            if (!user) {
+
+                alert(
+                    "Please login first! 🔐"
+                );
+
+
+                window.location.href =
+                    "student-login.html";
+
+
+                return;
+
+            }
+
+
+            try {
+
+                // ------------------------------------------
+                // GET STUDENT DATA FROM FIRESTORE
+                // ------------------------------------------
+
+                const studentDoc =
+                    await getDoc(
+                        doc(
+                            db,
+                            "students",
+                            user.uid
+                        )
+                    );
+
+
+                // ------------------------------------------
+                // CHECK DOCUMENT
+                // ------------------------------------------
+
+                if (
+                    studentDoc.exists()
+                ) {
+
+                    const studentData =
+                        studentDoc.data();
+
+
+                    // --------------------------------------
+                    // DISPLAY STUDENT NAME
+                    // --------------------------------------
+
+                    const studentName =
+                        document.getElementById(
+                            "studentName"
+                        );
+
+
+                    if (studentName) {
+
+                        studentName.textContent =
+                            studentData.name;
+
+                    }
+
+
+                    // --------------------------------------
+                    // DISPLAY FULL NAME
+                    // --------------------------------------
+
+                    const dashboardNameElement =
+                        document.getElementById(
+                            "dashboardName"
+                        );
+
+
+                    if (
+                        dashboardNameElement
+                    ) {
+
+                        dashboardNameElement.textContent =
+                            studentData.name;
+
+                    }
+
+
+                    // --------------------------------------
+                    // DISPLAY ROLL NUMBER
+                    // --------------------------------------
+
+                    const dashboardRoll =
+                        document.getElementById(
+                            "dashboardRoll"
+                        );
+
+
+                    if (dashboardRoll) {
+
+                        dashboardRoll.textContent =
+                            studentData.rollNumber;
+
+                    }
+
+
+                    // --------------------------------------
+                    // DISPLAY COURSE
+                    // --------------------------------------
+
+                    const dashboardCourse =
+                        document.getElementById(
+                            "dashboardCourse"
+                        );
+
+
+                    if (dashboardCourse) {
+
+                        dashboardCourse.textContent =
+                            studentData.course;
+
+                    }
+
+
+                    // --------------------------------------
+                    // DISPLAY EMAIL
+                    // --------------------------------------
+
+                    const dashboardEmail =
+                        document.getElementById(
+                            "dashboardEmail"
+                        );
+
+
+                    if (dashboardEmail) {
+
+                        dashboardEmail.textContent =
+                            studentData.email;
+
+                    }
+
+                }
+
+                else {
+
+                    alert(
+                        "Student information not found! ⚠️"
+                    );
+
+                }
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Dashboard Error:",
+                    error
+                );
+
+
+                alert(
+                    "Unable to load student data. ❌\n" +
+                    error.message
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+// ======================================================
+// LOGOUT
+// ======================================================
+
+const logoutBtn =
+    document.getElementById(
+        "logoutBtn"
+    );
+
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+        async function () {
+
+            try {
+
+                // Firebase logout
+
+                await signOut(auth);
+
+
+                alert(
+                    "You have been logged out successfully! 👋"
+                );
+
+
+                // Redirect to login
+
+                window.location.href =
+                    "student-login.html";
+
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Logout Error:",
+                    error
+                );
+
+
+                alert(
+                    "Logout failed! ❌"
+                );
 
             }
 
